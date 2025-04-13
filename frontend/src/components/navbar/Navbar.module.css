@@ -1,0 +1,22 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.375);
+}
+
+ul {
+    margin: 0 1rem;
+    padding: 0;
+    display: flex;
+    list-style: none;
+}
+
+li {
+    display: flex;
+    align-items: center;
+}
+
+.options {
+    margin: 1rem;
+}

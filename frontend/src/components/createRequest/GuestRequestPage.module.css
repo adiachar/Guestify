@@ -1,0 +1,80 @@
+.guestRequestPage {
+    width: 100%;
+    height: 100%;
+    padding-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.guestRequestForm {
+    width: 80%;
+    padding: 1rem;
+    margin-bottom: 5rem;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.guestDtl {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 1px solid rgb(228, 228, 228);
+}
+
+.row1, .row2, .row3 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inpField {
+    min-width: 15rem;
+    margin: 0.5rem 0.5rem;
+    border-radius: 5px;
+}
+
+.inpField input, .inpField textarea, .inpField select, .radioInps, .checkBoxInps{
+    background-color: rgb(234, 234, 234);
+}
+
+.radioInps input, .checkBoxInps input {
+    margin-right: 1rem;
+}
+
+.radioInps, .checkBoxInps {
+    height: 100%;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.sendTo {
+    display: block;
+    margin: 1rem 0.5rem 0.5rem 0.5rem;
+}
+
+.button {
+    display: block !important;
+    padding: 0.5rem 3rem !important;
+    margin: 1rem 0.5rem 0 auto !important;
+    color: white !important;
+    background-color: #2E8B57 !important;
+}
+
+.status {
+    margin: 1rem auto 1rem auto;
+    display: block;
+    text-align: center;
+    color: red;
+}
+
+:global( .react-datepicker-wrapper) {
+    display: block;
+}
+
+:global(.react-datepicker__time-list) {
+    display: flex;
+    flex-direction: column;
+}

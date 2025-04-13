@@ -1,0 +1,71 @@
+.signPage {
+    width: 100%;
+    min-height: 100vh;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signIn, .signUp {
+    width: 22rem;
+    margin: 1rem;
+    padding: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.664);
+    background-color: white;
+    border-radius: 10px;
+    transition-duration: 1s;
+}
+
+h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.84);
+}
+
+.inpField {
+    position: relative;
+    margin: 1rem 0;
+}
+
+.inpField input {
+    padding-left: 2.5rem;
+    background-color: rgb(234, 234, 234);
+}
+
+.inpField select {
+    padding-left: 2.5rem;
+    background-color: rgb(234, 234, 234);
+}
+
+.icons {
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+    color: rgba(0, 0, 0, 0.748);
+}
+
+.button {
+    width: 100%;
+    background-color: #2E8B57 !important;
+    display: block !important;
+    margin: auto !important;
+}
+
+.bottomText {
+    color: white;
+}
+
+.getSignUp {
+    color: rgb(113, 113, 255);
+    cursor: pointer;
+}
+
+.status {
+    margin: 1rem auto 0 auto;
+    display: block;
+    text-align: center;
+    color: red;
+}
