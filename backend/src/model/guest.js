@@ -12,10 +12,11 @@ const guestSchema = new Schema({
         lunch: { type: Boolean, default: false},
         dinner: { type: Boolean, default: false}
     },
-    arrivalDate: Date,
-    arrivalTime: Date,
-    leavingDate: Date,
-    guestRequest_id: {
+    arrivalDate: {type: Date, required: true},
+    arrivalTime: {type: Date, required: true},
+    leavingDate: {type: Date, required: true},
+    
+    req_id: {
         type: Schema.Types.ObjectId,
         ref: "GuestRequest",
         required: true,

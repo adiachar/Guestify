@@ -1,41 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {useSelector, useDispatch} from "react-redux";
+import {useLocation, useNavigate} from "react-router-dom";
+
 import {setAllRequests} from "../../features/guestifySlice.js";
 import axios from "axios";
 
 import RequestCard from "./RequestCard";
 import ar from "./AllRequests.module.css";
 
-const allRequests = [
-    {
-        creator: {
-            name: "createrName",
-            department: "ISE"
-        },
-        createdAt: "12-03-2025",
-    },
-    {
-        creator: {
-            name: "createrName",
-            department: "ISE"
-        },
-        createdAt: "12-03-2025",
-    },
-    {
-        creator: {
-            name: "createrName",
-            department: "ISE"
-        },
-        createdAt: "12-03-2025",
-    }
-];
-
 export default function AllRequestsPage() {
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const headers = useSelector(state => state.headers);
+    const user = useSelector(state => state.user);
     const allRequests = useSelector(state => state.allRequests);
 
     const dispatch = useDispatch();
+
+    const [isUpdated, setIsUpdated] = useState(false);
 
     useEffect(() => {
         let getAllRequests = async () => {
@@ -51,15 +35,18 @@ export default function AllRequestsPage() {
             }
         } 
 
-        if(allRequests.length == 0) {
-            getAllRequests();
+        if(!user._id) {
+            return navigate("/");
         }
-    });
+
+        getAllRequests();
+
+    }, [isUpdated]);
 
     return (
-        <div>
-            {allRequests.map((val, idx) => (
-                <RequestCard creatorName={val.creator.name} createdAt={val.createdAt} key={idx}/>
+        <div className={ar.allRequests}>
+            {allRequests.length === 0 ? <h4 style={{textAlign: "center"}}>No Requests Here!</h4> : allRequests.map((req, idx) => (
+                <RequestCard req={req} setIsUpdated={setIsUpdated} key={idx} />
             ))}
         </div>
     );

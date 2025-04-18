@@ -10,10 +10,9 @@ import Navbar from "../navbar/Navbar.jsx";
 import SignPage from "../user/SignPage.jsx";
 import GuestRequestPage from "../createRequest/GuestRequestPage.jsx";
 import AllRequestsPage from "../allRequests/AllRequestsPage.jsx";
+import GuestReqLetter from "../gstReqLetter/GuestRequestLetter.jsx";
 
 import hp from "./HomePage.module.css";
-
-
 
 
 export default function HomePage() {
@@ -43,7 +42,7 @@ export default function HomePage() {
             }
         }
 
-        if(!user._id) {
+        if(!user._id || !headers.authorization) {
             authorizeUser();
         }
 
@@ -53,12 +52,14 @@ export default function HomePage() {
 
     return (
         <div className={hp.homePage}>
+            <div className={hp.what}></div>
             {!noNavRoutes.includes(location.pathname) && <Navbar/>}
             <Routes>
                 <Route path="/*" element={<h1>Landing Page</h1>} />
                 <Route path="/user/sign" element={<SignPage/>} />
                 <Route path="/create-request" element={<GuestRequestPage/>} />
-                <Route path="/all-requests" element={<AllRequestsPage/>} />
+                <Route path="/all-requests" element={<AllRequestsPage/>}/>
+                <Route path="/guest-request-letter" element={<GuestReqLetter/>} />
             </Routes>
         </div>
     );

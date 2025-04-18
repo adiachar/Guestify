@@ -26,6 +26,7 @@ const departments = [
     "MCA",
     "MBA",
 ];
+const collegeName = "MITE";
 
 export default function SignUp() {
 
@@ -101,9 +102,9 @@ export default function SignUp() {
             <div className={s.inpField}>
                 <AccountBalanceIcon className={s.icons}/>
                 <select className='form-control' name="department" id="department" value={formik.values.department} onChange={formik.handleChange}>
-                    {departments.map((val, idx) => {
+                    {(formik.values.type === "hod" || formik.values.type === "coordinator" )? departments.map((val, idx) => {
                         return (<option value={val} key={idx}>{val}</option>);
-                    })}
+                    }) : <option value={collegeName}>{collegeName}</option>}
                 </select>
             </div>
             <div className={s.inpField}>

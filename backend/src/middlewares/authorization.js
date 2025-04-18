@@ -14,6 +14,7 @@ export const authorizeUser = (req, res, next) => {
             next();
 
         } else {
+            console.log(req.headers);
             return res.status(404).json({message: "No Auth Header!"});
         }
 

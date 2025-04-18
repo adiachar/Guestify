@@ -20,3 +20,7 @@ const hostelSchema = new Schema({
         type: String,
     }
 });
+
+const Hostel = new model("Hostel", hostelSchema);
+
+export default Hostel;

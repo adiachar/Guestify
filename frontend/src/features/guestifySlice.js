@@ -29,6 +29,7 @@ const guestifySlice = createSlice({
 export const {
     setUser,
     setHeader,
+    setAllRequests
 } = guestifySlice.actions;
 
 export default guestifySlice.reducer;

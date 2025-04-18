@@ -8,14 +8,46 @@
     align-items: center;
 }
 
+.sign {
+    min-height: 32rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    border-radius: 10px;
+    background-color: white;
+    flex-wrap: wrap;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.left {
+    width: 22rem;
+    border: 3px solid white;
+    border-radius: 10px;
+    background-color: #142424;
+    background-image: url(../../assets/Guestify.png);
+    background-size: 160%;
+    background-position: 32%;
+    background-repeat: no-repeat;
+}
+
+.left h1 {
+    margin: 1rem;
+    text-align: center;
+    color: white;
+}
+
+.right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .signIn, .signUp {
     width: 22rem;
-    margin: 1rem;
     padding: 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.664);
-    background-color: white;
-    border-radius: 10px;
     transition-duration: 1s;
+    justify-self: center;
 }
 
 h2 {
@@ -54,12 +86,19 @@ h2 {
     margin: auto !important;
 }
 
+.bottomNav {
+    display: flex;
+    justify-content: center;
+}
+
 .bottomText {
-    color: white;
+    color: black;
 }
 
 .getSignUp {
-    color: rgb(113, 113, 255);
+    text-decoration: underline;
+    text-decoration-color: rgb(144, 144, 223);
+    color: rgb(47, 47, 245);
     cursor: pointer;
 }
 
@@ -68,4 +107,14 @@ h2 {
     display: block;
     text-align: center;
     color: red;
+}
+
+@media screen and (max-width: 800px) {
+    .sign {
+        min-height: auto;
+    }
+
+    .left {
+        display: none;
+    }
 }

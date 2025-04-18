@@ -22,7 +22,7 @@ export default function GuestRequestPage() {
     const [reasonOfArrival, setReasonOfArrival] = useState("");
     const [status, setStatus] = useState("");
     const [allHods, setAllHods] = useState([]);
-
+    const [isCreated, setIsCreated] = useState(false);
     const headers = useSelector(state => state.headers);
     const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ export default function GuestRequestPage() {
 
             } catch(err) {
                 if(err.response) {
-                    setStatus(err.response.data.message);
+                    console.log(err.response.data.message);
                 }
             }
         }
@@ -136,28 +136,28 @@ export default function GuestRequestPage() {
 
         let values = {
             guest: guest,
-            hod_id: selectedHod_id,
+            hodId: selectedHod_id,
             reasonOfArrival: reasonOfArrival,
-            status: status
         }
         
         try {
             let response = await axios.post("http://localhost:5000/request/guest-request", values, {headers});
 
             if(response.status === 200) {
-                console.log("success");
+                setIsCreated(true);
+                setStatus("Request Created!");
             }
 
         } catch(err) {
             if(err.response) {
-                setStatus(err.response.data.message);
+                console.log(err.response.data.message);
             }
         }
     }
     
     return (
         <div className={gr.guestRequestPage}>
-            <form onSubmit={handleSubmit} className={gr.guestRequestForm}>
+            <form onSubmit={handleSubmit} className={gr.guestRequestForm} autoComplete='off'>
                 <div className={gr.inpField}>
                     <input 
                     className='form-control' 
@@ -182,6 +182,7 @@ export default function GuestRequestPage() {
                                         placeholder='Guest Name' 
                                         value={guest[idx].name}
                                         onChange={e => handleGstChange(e, idx)}
+                                        autoComplete='off'
                                         required
                                     />
                                 </div>
@@ -192,6 +193,9 @@ export default function GuestRequestPage() {
                                         placeholderText='Arrival Date' 
                                         selected={guest[idx].arrivalDate}
                                         onChange={(date) => handleDateTimeChange(date, "arrivalDate", idx)}
+                                        customInput={
+                                            <input autoComplete='off'/>
+                                        }
                                         required
                                     />
                                 </div>
@@ -208,6 +212,9 @@ export default function GuestRequestPage() {
                                         timeCaption='Time'
                                         timeFormat='hh:mm aa'
                                         dateFormat="h:mm aa"
+                                        customInput={
+                                            <input autoComplete='off'/>
+                                        }
                                         required
                                     />
                                 </div>
@@ -219,6 +226,9 @@ export default function GuestRequestPage() {
                                         selected={guest[idx].leavingDate}
                                         onChange={(date) => handleDateTimeChange(date, "leavingDate", idx)}
                                         required
+                                        customInput={
+                                            <input autoComplete='off'/>
+                                        }
                                     />    
                                 </div>
                             </div>
@@ -315,7 +325,7 @@ export default function GuestRequestPage() {
                         })}
                     </select>
                 </div>
-                <Button type='submit' className={gr.button}>Send</Button>
+                <Button type='submit' variant='contained' color="success" disabled={isCreated} className={gr.button}>Send</Button>
                 {status && <p className={gr.status}>{status}</p>}
             </form>
         </div>

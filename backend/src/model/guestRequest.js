@@ -1,39 +1,67 @@
 import {Schema, model} from "mongoose";
 
 const guestRequestSchema = new Schema({
-    creator_id: {
+    requestedBy: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    to_id: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    }],
-    status: {
-        type: String,
-        default: "NHNPNWNM",
-        required: true
-    },
-    statusMsg: {
-        type: String,
-    },
-    createdAt: {
+    requestedAt: {
         type: Date,
         default: Date.now,
     },
-    approvedAt: {
-        hod: Date,
-        principal: Date,
-        warden: Date,
-        messManager: Date,
+    to: {
+        hod: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        },
+        warden: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        },
+        messManager: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        }
+    },
+    approvals: {
+        hod: {
+            approved: {type: Boolean, default: false},
+            approvedAt: Date
+        },
+        principal: {
+            approved: {type: Boolean, default: false},
+            approvedAt: Date
+        },
+        warden: {
+            approved: {type: Boolean, default: false},
+            approvedAt: Date
+        },
+        messManager: {
+            approved: {type: Boolean, default: false},
+            approvedAt: Date
+        }
+    },
+    rejects: {
+        rejected: {
+            type: Boolean,
+            default: false,
+        },
+        by: {
+            type: Schema.Types.ObjectId, 
+            ref: "User"
+        },
+        at: Date,
+        reason: String,
     },
     reasonOfArrival: {
         type: String,
     },
     visibility: {
-        type: String,
-        default: "CHPWM"
+        hod: {type: Boolean, default: true},
+        principal: {type: Boolean, default: true},
+        warden: {type: Boolean, default: true},
+        messManager: {type: Boolean, default: true},
     }    
 });
 
