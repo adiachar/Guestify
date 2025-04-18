@@ -72,6 +72,11 @@ p {
     margin: 0.5rem 0;
 }
 
+.inpField p b {
+    font-weight: 500;
+    color: rgb(78, 78, 78);
+}
+
 .rejectComponent {
     border: 2px solid red;
     background-color: rgba(0, 0, 0, 0.1);
@@ -100,4 +105,37 @@ p {
     margin: 1rem auto;
     text-align: center;
     color: green;
+}
+
+.foodPreference, .foodTimings {
+    border-top: 2px dashed rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.foodTimings {
+    flex-direction: column;
+}
+
+.foodPreference label {
+    margin-right: 1rem;
+}
+
+.foodPreference input{
+    margin-right: 0.2rem;
+} 
+
+.foodTimings input {
+    margin-left: 0.3rem;
+}
+
+.foodInpField {
+    margin: 0.1rem 0;
+}
+
+@media screen and (max-width: 760px) {
+    .guestReqLetter {
+        padding: 0.5rem 0;
+    }
 }

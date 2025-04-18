@@ -91,7 +91,7 @@
 }
 
 .reqApproved, .reqPending {
-    padding: 0.1rem;
+    padding: 0.1rem 0.3rem;
     font-size: 0.85rem;
     margin: 0;
     color: white;
@@ -99,7 +99,7 @@
 }
 
 .reqApproved {
-    background-color: rgba(0, 255, 0, 0.85);
+    background-color: #28a745;
 }
 
 .reqPending {

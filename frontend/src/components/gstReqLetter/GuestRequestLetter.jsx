@@ -123,6 +123,65 @@ export default function GuestReqLetter() {
                                 <p className="pe-3"><b>Leaving Date: </b></p>
                                 <p>{getDate(guest.leavingDate)}</p>
                             </div>
+                            {user.type === "messManager" && (
+                                <>
+                                    <div className={rl.foodPreference}>
+                                        <label>
+                                            <input 
+                                                className={rl.radio}
+                                                type="radio"
+                                                checked={guest.isVegitarian}
+                                                readOnly
+                                            />
+                                            Vegetarian
+                                        </label>
+                                        <label>
+                                            <input 
+                                                className={rl.radio}
+                                                type="radio"
+                                                checked={!guest.isVegitarian}
+                                                readOnly
+                                            /> 
+                                            Non-Vegetarian
+                                        </label>
+                                    </div>
+                                    <div className={rl.foodTimings}>
+                                        <div className={rl.foodInpField}>
+                                            <label>
+                                                Breakfast
+                                                <input 
+                                                    className={rl.checkbox}
+                                                    type="checkbox"
+                                                    checked={guest.foodTime.breakfast}
+                                                    readOnly
+                                                /> 
+                                            </label>
+                                        </div>
+                                        <div className={rl.foodInpField}>
+                                            <label>
+                                                Lunch
+                                                <input 
+                                                    className={rl.checkbox}
+                                                    type="checkbox"
+                                                    checked={guest.foodTime.lunch}
+                                                    readOnly
+                                                /> 
+                                            </label>
+                                        </div>
+                                        <div className={rl.foodInpField}>
+                                            <label>
+                                                Dinner
+                                                <input 
+                                                    className={rl.checkbox}
+                                                    type="checkbox"
+                                                    checked={guest.foodTime.dinner}
+                                                    readOnly
+                                                /> 
+                                            </label>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     ))}
                 </div>

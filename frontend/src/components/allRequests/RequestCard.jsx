@@ -8,10 +8,10 @@ import axios from "axios";
 export default function RequestCard({req, setIsUpdated}) {
     const [status, setStatus] = useState("");
     const [isApproved, setIsApproved] = useState(
-        req.approvals.hod.approved && 
+        (req.approvals.hod.approved && 
         req.approvals.principal.approved &&
         req.approvals.warden.approved && 
-        req.approvals.messManager.approved
+        req.approvals.messManager.approved) ? true : false
     );
     
     const user = useSelector(state => state.user);
