@@ -6,7 +6,7 @@ import {setAllRequests} from "../../features/guestifySlice.js";
 import axios from "axios";
 
 import RequestCard from "./RequestCard";
-import ar from "./AllRequests.module.css";
+import ar from "./AllRequestsPage.module.css";
 
 export default function AllRequestsPage() {
 

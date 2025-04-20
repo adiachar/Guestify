@@ -15,6 +15,7 @@ import Report from "../report/ReportPage.jsx";
 
 import hp from "./HomePage.module.css";
 import LandingPage from "../LandingPage.jsx";
+import AccountPage from "../account/AccountPage.jsx";
 
 
 export default function HomePage() {
@@ -69,6 +70,7 @@ export default function HomePage() {
                 <Route path="/all-requests" element={<AllRequestsPage/>}/>
                 <Route path="/guest-request-letter" element={<GuestReqLetter/>} />
                 <Route path="/report" element={<Report/>} />
+                <Route path="/account" element={<AccountPage/>} />
             </Routes>
         </div>
     );

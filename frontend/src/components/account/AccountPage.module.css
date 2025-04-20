@@ -1,0 +1,39 @@
+.accountPage {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+}
+
+.account {
+    margin: 5rem auto;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.accountIcon {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 9rem !important;
+}
+
+.kvPair {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    font-size: 1.1rem;
+}
+
+.key {
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 700;
+    margin-right: 0.5rem;
+}
+
+.val {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.8);
+}

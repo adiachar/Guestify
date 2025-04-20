@@ -15,29 +15,34 @@ export default function Navbar() {
 
     return (
         <nav>
-            <h1 className={n.h1}>Guestify</h1>
-            {user._id && (<ul>
-                <li>
-                    {user.type === "coordinator" &&
-                        <Button 
-                            onClick={() => navigate("/create-request")} 
-                            variant='outlined' 
-                            color='dark'
-                            className={n.btn +" " +n.btnCreateReq}
+            <div className={n.features}>
+                <h1 className={n.h1}>Guestify</h1>
+                {user._id && (
+                    <ul>
+                        <li>
+                            {user.type === "coordinator" &&
+                                <Button 
+                                    onClick={() => navigate("/create-request")} 
+                                    variant='outlined' 
+                                    color='dark'
+                                    className={n.btn +" " +n.btnCreateReq}
 
-                        >Create Request</Button>
-                    }
-                </li>
-                <li>
-                    <Button 
-                        onClick={() => navigate("/all-requests")} 
-                        variant='outlined' 
-                        color="dark"
-                        className={n.btn +" " +n.btnAllReq}
+                                >Create Request</Button>
+                            }
+                        </li>
+                        <li>
+                            <Button 
+                                onClick={() => navigate("/all-requests")} 
+                                variant='outlined' 
+                                color="dark"
+                                className={n.btn +" " +n.btnAllReq}
 
-                    >{user.type === "coordinator" ? "Request Status" : "All Request"}</Button>
-                </li>
-            </ul>)}
+                            >{user.type === "coordinator" ? "Request Status" : "All Request"}</Button>
+                        </li>
+                    </ul>
+                )}
+            </div>
+
             <ul className={n.options}>
                 <li>
                     <Button
@@ -69,6 +74,8 @@ export default function Navbar() {
                                 variant=''
                                 color='dark'
                                 className={n.btn2 +" " +n.btnHome}
+                                onClick={() => navigate("/account")}
+
                             >Account</Button>
                         </li>                    
                     </>

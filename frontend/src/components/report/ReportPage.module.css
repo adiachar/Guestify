@@ -31,8 +31,147 @@
 .a4Report {
     width: 210mm;
     min-height: 297mm;
-    padding: 20mm;
+    padding: 10mm;
     background-color: white;
     color: black;
     margin: auto;
 }   
+
+.a4Report h2 {
+    text-align: center;
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    margin: 0;
+}
+
+.a4Report h3 {
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.5rem;
+    color: rgba(0, 0, 0, 0.842);
+    background-color: #d0d3d3;
+}
+
+.header {
+    padding-bottom: 1rem; 
+    display: flex;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    width: 9%;
+}
+
+.college {
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.college h1{
+    text-align: center;
+    font-size: 1.4rem;
+    color: rgb(255, 123, 0);
+}
+
+.college p {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.811);
+    padding: 0 2rem;
+}
+
+.guestsDtl, .reasonOfArrival, .approvalStatus, .roomDtls {
+    margin-bottom: 2rem;
+}
+
+.guestDtl {
+    background-color: #e7e9e9;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border: 3px dashed rgba(0, 0, 0, 0.1);
+}
+
+.kvpair {
+    max-width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.kvpair .key {
+    width: 100%;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.885);
+}
+
+.kvpair .val {
+    width: 100%;
+    text-align: start;
+}
+
+.approvalRows {
+    display: flex;
+    flex-direction: column;
+}
+
+.approvalRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.approvalRow p {
+    flex: 1;
+}
+
+.approvalRow p:nth-child(3) {
+    text-align: end;
+}
+
+.approvalRow p:nth-child(4) {
+    text-align: end;
+}
+
+.roomDtl {
+    display: flex;
+    background-color: #e7e9e9;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border: 3px dashed rgba(0, 0, 0, 0.1);
+    
+}
+
+.roomDtl .kvpair {
+    flex: 0.5;
+}
+
+.roomDtl .kvpair:nth-child(1) p:nth-child(1) {
+    text-align: center;
+}
+
+.roomDtl .kvpair:nth-child(2) p:nth-child(1) {
+    text-align: center;
+}
+
+.roomDtl .kvpair:nth-child(2) p:nth-child(2) {
+    text-align: start;
+}
+
+.roomDtl .kvpair:nth-child(3) p:nth-child(1) {
+    text-align: center;
+}
+
+.roomDtl .kvpair:nth-child(3) p:nth-child(2) {
+    text-align: start;
+}
+
+.downloadSection {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.downloadBtn {
+    color: white !important;
+}

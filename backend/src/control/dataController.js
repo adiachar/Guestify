@@ -101,17 +101,16 @@ export const getGuestRequest = async (req, res) => {
         .populate("to.messManager", "name department")
         .lean();
 
-        let principal = await User.findOne({type: "principal"}, "name");
-        let guests = await Guest.find({req_id: reqId});
+        let principal = await User.findOne({type: "principal"}, "name").lean();
+        let guests = await Guest.find({req_id: reqId}).lean();
 
         for(let guest of guests) {
-            let hostel = await Hostel.find({guest_id: guest._id});
-            guest.hostel = hostel;
+            guest.hostel = await Hostel.findOne({guest_id: guest._id}).lean();
         }
 
         guestRequest.guests = guests;
         guestRequest.to.principal = principal;
-
+        
         return res.status(200).json({guestRequest: guestRequest});
         
     } catch(err) {

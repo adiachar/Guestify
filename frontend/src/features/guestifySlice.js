@@ -7,7 +7,7 @@ const initialState = {
     college: { 
         short: 'MITE',
         name: "Mangalore Institute Of Technology & Engineering",
-        dtl: "(A Unit of Rajalaxmi Education Trust, Mangalore) \n Autonomous Institute Affialiated to VTU, Belagavi, Approved by AICTE, New Delhi Accredited by NAAC with A+ Grade & ISO 9001:2015 Certified Institution",
+        dtl: "(A Unit of Rajalaxmi Education Trust, Mangalore) Autonomous Institute Affialiated to VTU, Belagavi, Approved by AICTE, New Delhi Accredited by NAAC with A+ Grade & ISO 9001:2015 Certified Institution",
         departments: {
             AE: "Aeronautical Engineering",
             CSE: "Computer Science And Engineering",

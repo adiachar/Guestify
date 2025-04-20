@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import {useSelector} from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import gr from "./GuestRequestPage.module.css";
-import { useNavigate } from 'react-router-dom';
-
 
 export default function GuestRequestPage() {
 
@@ -321,7 +320,8 @@ export default function GuestRequestPage() {
                 </div>
                 <Button 
                     type='submit' 
-                    variant='contained' 
+                    variant='outlined'
+                    color='dark' 
                     disabled={isCreated} 
                     className={gr.button}
                     
