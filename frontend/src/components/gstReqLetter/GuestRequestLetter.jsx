@@ -42,12 +42,7 @@ export default function GuestReqLetter() {
             return navigate("/");
         }
 
-        for(let curReq of allRequests) {
-            if(location.state.reqId == curReq._id) {
-                setReq(curReq);
-                break;
-            }
-        }
+        setReq(location.state.req);
     },[]);
 
     const handleApprove = async () => {
@@ -79,7 +74,7 @@ export default function GuestReqLetter() {
     }
 
     return (
-        <div className={rl.guestReqLetter}>
+        <div className={rl.GuestReqLetter}>
             {Object.keys(req).length !== 0 && <div className={rl.guestReqLetter}>
                 <div className={rl.from}>
                     <h5>From: </h5>
@@ -87,12 +82,12 @@ export default function GuestReqLetter() {
                     <p>{branchFullForms[req.requestedBy.department]}</p>    
                     <p>Mangalore Institute of Technology and Engineering</p>
                 </div>
-                <div className={rl.to}>
+                {user.type !== "coordinator" && (<div className={rl.to}>
                     <h5>To: </h5>
                     <p>{user.name}</p>
                     {(user.type === "hod" || user.type === "coordinator") && <p>{branchFullForms[user.department]}</p>}
                     <p>Mangalore Institute of Technology and Engineering</p>
-                </div>
+                </div>)}
                 <div className={rl.date}>
                     <p>{getDate(req.requestedAt)}</p>
                 </div>
@@ -123,7 +118,7 @@ export default function GuestReqLetter() {
                                 <p className="pe-3"><b>Leaving Date: </b></p>
                                 <p>{getDate(guest.leavingDate)}</p>
                             </div>
-                            {user.type === "messManager" && (
+                            {(user.type === "messManager" || user.type === "coordinator") && (
                                 <>
                                     <div className={rl.foodPreference}>
                                         <label>
@@ -185,7 +180,7 @@ export default function GuestReqLetter() {
                         </div>
                     ))}
                 </div>
-                <div className={rl.btns +" mt-3"}>
+                {user.type !== "coordinator" && (<div className={rl.btns +" mt-3"}>
                     <Button 
                         variant="outlined" 
                         color="success" 
@@ -198,7 +193,7 @@ export default function GuestReqLetter() {
                             )
                         }
 
-                        disabled={(req.approvals[user.type].approved || req.rejects.rejected || isSubmited)} 
+                        disabled={user.type !== "coordinator" ? (req.approvals[user.type].approved || req.rejects.rejected || isSubmited) : true} 
                     >
                         Approve
                     </Button>
@@ -206,12 +201,12 @@ export default function GuestReqLetter() {
                         className="ms-3" 
                         variant="outlined" 
                         color="error" 
-                        disabled={req.approvals[user.type].approved || req.rejects.rejected || isSubmited} 
+                        disabled={user.type !== "coordinator" ? (req.approvals[user.type].approved || req.rejects.rejected || isSubmited) : true} 
                         onMouseEnter={() =>console.log(req.status)}
                         onClick={handleReject}
                         >Reject
                     </Button>
-                </div>
+                </div>)}
             </div>}
             {rejectRequest && <RejectGuestRequest isSubmited={isSubmited} setIsSubmited={setIsSubmited} setStatus={setStatus} req={req} headers={headers}/>}
             {principalApprove && <ApproveRequestForPrincipal isSubmited={isSubmited} setIsSubmited={setIsSubmited} setStatus={setStatus} req={req} headers={headers}/>}

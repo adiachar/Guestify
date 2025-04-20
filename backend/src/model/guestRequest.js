@@ -58,6 +58,7 @@ const guestRequestSchema = new Schema({
         type: String,
     },
     visibility: {
+        coordinator: {type: Boolean, default: true},
         hod: {type: Boolean, default: true},
         principal: {type: Boolean, default: true},
         warden: {type: Boolean, default: true},

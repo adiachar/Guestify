@@ -1,5 +1,10 @@
-.guestReqLetter {
+.GuestReqLetter {
     background-color: white;
+    margin: 1rem;
+    padding: 0.5rem;
+}
+
+.guestReqLetter {
     margin: 1rem;
     padding: 0.5rem;
 }
@@ -136,6 +141,6 @@ p {
 
 @media screen and (max-width: 760px) {
     .guestReqLetter {
-        padding: 0.5rem 0;
+        padding: 0.5rem 0.2rem;
     }
 }

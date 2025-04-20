@@ -14,6 +14,8 @@ export default function RequestCard({req, setIsUpdated}) {
         req.approvals.messManager.approved) ? true : false
     );
     
+    const [deletePermanently, setDeletePermanently] = useState(false);
+    
     const user = useSelector(state => state.user);
     const headers = useSelector(state => state.headers);
     const navigate = useNavigate();
@@ -24,7 +26,7 @@ export default function RequestCard({req, setIsUpdated}) {
     }
 
     const handleView = () => {
-        navigate("/guest-request-letter", {state: {reqId: req._id}});
+        navigate("/guest-request-letter", {state: {req: req}});
     } 
 
     const handleDelete = async () => {
@@ -39,10 +41,33 @@ export default function RequestCard({req, setIsUpdated}) {
         } catch(err) {
             console.log(err);
             if(err.response) {
-                console.log(err.response.data.message);
 
                 if(err.response.data.isActionRequired) {
-                    setStatus("Please Approve or Reject the Request before Deleting it.");
+                    setStatus("Can't delete as Request is not Approved or Rejected.");
+                }
+            }
+        }
+    }
+
+    const handleReport = () => {
+        navigate("/report", {state: {req: req}});
+    }
+
+    const handleDeletePermanently = async () => {
+        try {
+            let response = await axios.patch(`http://localhost:5000/request/delete-permanently/${req._id}`, {}, {headers});
+        
+            if(response.status === 200) {
+                setIsUpdated(isUpdated => !isUpdated);
+                navigate("/all-requests");
+            }
+
+        } catch(err) {
+            console.log(err);
+            if(err.response) {
+
+                if(err.response.data.isActionRequired) {
+                    setStatus("Internal Server Error!");
                 }
             }
         }
@@ -55,7 +80,7 @@ export default function RequestCard({req, setIsUpdated}) {
                 <div className={rc.dtl}>
                     <span className={rc.creator}>From: {req.requestedBy.name}</span>
                     <span className={rc.createdAt}>{req.requestedAt.toString().split('T')[0]}</span>
-                    {(!req.approvals[user.type].approved && !req.rejects.rejected) && <span className={rc.dot}></span>}
+                    {user.type !== "coordinator" && ((!req.approvals[user.type].approved && !req.rejects.rejected) && <span className={rc.dot}></span>)}
                 </div>
                 <div className={rc.reqStatus}>
                     {req.rejects.rejected ?
@@ -73,8 +98,36 @@ export default function RequestCard({req, setIsUpdated}) {
                     }
                 </div>
             </div>
-            <Button className={rc.btn +" " +rc.btnView} variant="outlined" size="small" onClick={handleView}>View</Button>
-            <Button className={rc.btn +" " +rc.btnDelete} variant="outlined" size="small" onClick={handleDelete}>Delete</Button>
+            <div className={rc.btns}>
+                <Button className={rc.btn +" " +rc.btnView} variant="outlined" size="small" onClick={handleView}>View</Button>
+                <Button className={rc.btn +" " +rc.btnDelete} variant="outlined" size="small" onClick={handleDelete}>Delete For Me</Button>
+                {user.type === "coordinator" && (
+                    <>
+                        <Button 
+                            className={rc.btn +" " +rc.btnReport} 
+                            variant="outlined" 
+                            size="small" 
+                            onClick={handleReport}
+
+                        >Report</Button>
+
+                        <Button 
+                            className={rc.btn +" " +rc.btnDeletePermanently} 
+                            variant="outlined" size="small" 
+                            onClick={() => setDeletePermanently(val => !val)}
+
+                        >Delete Permanently</Button>                    
+                    </>
+
+                )}
+            </div>
+            
+            {deletePermanently && 
+                <div className={rc.deletePermanently}>
+                    <p>By clicking on Delete Permanently, this Request will deleted from the Database.</p>
+                    <Button className={rc.deletePermanentlyBtn} variant="contained" size="small" onClick={handleDeletePermanently} color="error">Delete Permanently</Button>
+                </div>
+            }
             {status && <p className={"text-muted"}>{status}</p>}
         </div>
     );

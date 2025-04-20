@@ -1,0 +1,121 @@
+.landingPage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.section1, .section2 {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.dtl, .image {
+    flex: 1;
+    min-height: 60vh;
+    color: white;
+}
+
+.dtl {
+    padding: 4rem 2rem;
+}
+
+.dtl h1{
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: rgb(221, 221, 221);
+}
+
+.dtl p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.section1 .image {
+    background-image: url(../assets/randomImg.png);
+    background-size: 120%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.section2 .image {
+    background-image: url(../assets/random2.png);
+    background-size: 61%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.getStartedBtn, .learnMoreBtn {
+    margin: 1rem !important;
+}
+
+.getStartedBtn {
+    background-color: white !important;
+    color: black !important;
+}
+
+.icon {
+    margin-left: 0.5rem;
+}
+
+@media screen and (max-width: 1270px) {
+    .section1 .image, .section2 .image {
+        background-size: 80%;
+    }
+
+    .dtl h1 {
+        font-size: 3rem;
+    }
+
+    .dtl p {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 760px){
+
+    .section1, .section2 {
+        flex-direction: column;
+        min-height: 40vh;
+        height: 40vh;
+    }
+
+    .dtl {
+        width: 100%;
+        padding: 1rem 1rem;
+    }
+
+    .dtl h1 {
+        font-size: 2rem;
+    }
+
+    .dtl p {
+        font-size: 1rem;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .getStartedBtn, .learnMoreBtn {
+        padding: 0.5rem !important;
+        margin: 1rem !important;
+    }
+    
+    .getStartedBtn {
+        background-color: white !important;
+        color: black !important;
+    }
+}

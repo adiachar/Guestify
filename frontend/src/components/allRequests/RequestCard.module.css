@@ -1,5 +1,5 @@
 .requestCard {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .dtl {
@@ -7,6 +7,10 @@
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 0.5rem;
+}
+
+.header h4 {
+    font-weight: 700;
 }
 
 .creator, .createdAt, .rejected{
@@ -106,8 +110,19 @@
     background-color: #ffc107;
 }
 
+.btns {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .btn {
-    margin: 0.5rem 1rem 1rem 0 !important;
+    margin: 0.5rem 1rem 0.5rem 0 !important;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:active {
+        cursor:progress;
+    }
 }
 
 .btnView {
@@ -116,6 +131,30 @@
 }
 
 .btnDelete {
-    border-color: rgba(255, 0, 0, 0.747) !important;
-    color: rgba(255, 0, 0, 0.747) !important;
+    border-color: rgba(255, 0, 0, 0.7) !important;
+    color: rgba(255, 0, 0, 0.7) !important;
+}
+
+.btnReport {
+    border-color: rgba(0, 0, 0, 0.7) !important;
+    color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.btnDeletePermanently {
+    border-color: rgb(196, 0, 0) !important;
+    color: rgb(196, 0, 0) !important;
+}
+
+.deletePermanently {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 2px dashed rgba(255, 0, 0, 0.5);
+}
+
+.deletePermanently p {
+    color: rgba(255, 0, 0, 0.8);
+}
+
+.deletePermanentlyBtn {
+    box-shadow: none !important;
 }

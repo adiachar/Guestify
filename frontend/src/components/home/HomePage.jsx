@@ -11,8 +11,10 @@ import SignPage from "../user/SignPage.jsx";
 import GuestRequestPage from "../createRequest/GuestRequestPage.jsx";
 import AllRequestsPage from "../allRequests/AllRequestsPage.jsx";
 import GuestReqLetter from "../gstReqLetter/GuestRequestLetter.jsx";
+import Report from "../report/ReportPage.jsx";
 
 import hp from "./HomePage.module.css";
+import LandingPage from "../LandingPage.jsx";
 
 
 export default function HomePage() {
@@ -24,8 +26,15 @@ export default function HomePage() {
 
     useEffect(() => {
         let authorizeUser = async () => {
+
+            const token = localStorage.getItem("token");
+
+            if(!token) {
+                return;
+            }
+
             let headers = {
-                authorization: `Bearer ${localStorage.getItem("token")}`,
+                authorization: `Bearer ${token}`,
             }
 
             try {
@@ -33,12 +42,12 @@ export default function HomePage() {
 
                 if(response.status === 200) {
                     dispatch(setUser(response.data.user));
-                    dispatch(setHeader(localStorage.getItem("token")));
+                    dispatch(setHeader(token));
                     setStatus("User is Authorized!");
                 }
                 
             } catch(err) {
-                navigate("/user/sign");
+                navigate("/");
             }
         }
 
@@ -52,14 +61,14 @@ export default function HomePage() {
 
     return (
         <div className={hp.homePage}>
-            <div className={hp.what}></div>
             {!noNavRoutes.includes(location.pathname) && <Navbar/>}
             <Routes>
-                <Route path="/*" element={<h1>Landing Page</h1>} />
+                <Route path="/*" element={<LandingPage/>} />
                 <Route path="/user/sign" element={<SignPage/>} />
                 <Route path="/create-request" element={<GuestRequestPage/>} />
                 <Route path="/all-requests" element={<AllRequestsPage/>}/>
                 <Route path="/guest-request-letter" element={<GuestReqLetter/>} />
+                <Route path="/report" element={<Report/>} />
             </Routes>
         </div>
     );

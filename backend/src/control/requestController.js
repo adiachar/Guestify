@@ -108,10 +108,21 @@ export const rejectGuestRequest = async (req, res) => {
 export const deleteRequestForMe = async (req, res) => {
     try {
         let {reqId} = req.params;
+        let isActionRequired = true;
+
         let result1 = await GuestRequest.findById(reqId, "approvals rejects visibility").lean();
-        
-        let isActionRequired = result1.rejects.rejected ? false : (result1.approvals[req.user.type].approved ? false : true);
-        
+
+        if(req.user.type === "coordinator") {
+            isActionRequired = result1.rejects.rejected ? false : !(
+                result1.approvals.hod.approved && 
+                result1.approvals.principal.approved && 
+                result1.approvals.warden.approved && 
+                result1.approvals.messManager.approved
+            );
+        } else {
+            isActionRequired = result1.rejects.rejected ? false : (result1.approvals[req.user.type].approved ? false : true);            
+        }
+
         if(isActionRequired) {
             return res.status(404).json({message: "Need Action", isActionRequired: isActionRequired});
         }
@@ -142,5 +153,25 @@ export const allotHostel = async (req, res) => {
         console.log(err);
 
         return res.status(500).json({message: "Internal Server Error!"});
+    }
+}
+
+export const deletePermanently = async (req, res) => {
+    try {   
+        let {reqId} = req.params;
+        let guests = await Guest.find({req_id: reqId}, "_id");
+
+        for(let guest of guests) {
+            let result1 = await Hostel.deleteMany({guest_id: guest._id});
+            let result2 = await Guest.deleteOne({_id: guest._id});
+        }
+
+        let result = await GuestRequest.deleteOne({_id: reqId});
+
+        return res.status(200).json({message: "Request Deleted"});
+
+    } catch(err) {
+        console.log(err);
+        return res.status(500).json({message: "Internal Server Error"});
     }
 }

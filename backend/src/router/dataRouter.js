@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import { getAllHods, getAllWardens, getAllMessManagers, getAllRequests } from "../control/dataController.js";
+import { getAllHods, getAllWardens, getAllMessManagers, getAllRequests, getGuestRequest } from "../control/dataController.js";
 import { authorizeUser } from "../middlewares/authorization.js";
 
 router.route("/all-hods")
@@ -14,5 +14,8 @@ router.route("/all-messManagers")
 
 router.route("/all-requests")
 .get(authorizeUser, (req, res) => getAllRequests(req, res));
+
+router.route("/guest-request/:reqId")
+.get(authorizeUser, (req, res) => getGuestRequest(req, res));
 
 export default router;

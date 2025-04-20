@@ -1,0 +1,38 @@
+.report {
+    width: 100%;
+    padding: 1rem;
+    overflow: auto;
+}
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+    }
+
+    .a4Report {
+        width: 210mm;
+        height: 297mm;
+        padding: 20mm;
+        background-color: white;
+        color: black;
+    }
+
+    .page-break {
+        page-break-before: always;
+        break-before: page;
+    }
+
+    .avoid-break {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}
+
+.a4Report {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    background-color: white;
+    color: black;
+    margin: auto;
+}   

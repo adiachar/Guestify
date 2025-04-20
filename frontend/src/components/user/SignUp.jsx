@@ -1,6 +1,6 @@
 import {useState } from 'react';
 import {useFormik} from "formik";
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { setUser, setHeader } from '../../features/guestifySlice';
@@ -16,23 +16,15 @@ import { Button } from '@mui/material';
 
 import s from "./Sign.module.css";
 
-
-const userTypes = ['coordinator', 'hod', 'principal', 'warden', 'messManager'];
-const departments = [
-    "ISE",
-    "CSE",
-    "ECE",
-    "AIML",
-    "MCA",
-    "MBA",
-];
-const collegeName = "MITE";
-
 export default function SignUp() {
 
     const [status, setStatus] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const college = useSelector(state => state.college);
+    const userTypes = useSelector(state => state.userTypes);
+    const departments = Object.keys(college.departments);
+    const collegeShortForm = college.short;
 
     const formik = useFormik({
         initialValues: {
@@ -104,7 +96,7 @@ export default function SignUp() {
                 <select className='form-control' name="department" id="department" value={formik.values.department} onChange={formik.handleChange}>
                     {(formik.values.type === "hod" || formik.values.type === "coordinator" )? departments.map((val, idx) => {
                         return (<option value={val} key={idx}>{val}</option>);
-                    }) : <option value={collegeName}>{collegeName}</option>}
+                    }) : <option value={collegeShortForm}>{collegeShortForm}</option>}
                 </select>
             </div>
             <div className={s.inpField}>

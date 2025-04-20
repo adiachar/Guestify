@@ -65,7 +65,7 @@ export default function SignIn() {
                 onChange={formik.handleChange}
                 required/>
             </div>
-            <Button type='submit' variant='contained' className={s.button}>Sign-in</Button>
+            <Button type='submit' variant='contained' color="dark" className={s.button}>Sign-in</Button>
             {status && <p className={s.status}>{status}</p>}
         </form>
     );

@@ -35,7 +35,7 @@
 }
 
 .inpField input, .inpField textarea, .inpField select, .radioInps, .checkBoxInps{
-    background-color: rgb(234, 234, 234);
+    background-color: #e7e9e9;
 }
 
 .radioInps input, .checkBoxInps input {
@@ -56,9 +56,16 @@
 }
 
 .button {
+    background-color: #142424 !important;
+    color: white !important;
+    box-shadow: none !important;
     display: block !important;
     padding: 0.5rem 3rem !important;
     margin: 1rem 0.5rem 0 auto !important;
+}
+
+.sendIcon {
+    margin: 0 0.5rem 0 0;
 }
 
 .status {

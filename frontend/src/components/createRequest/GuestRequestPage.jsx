@@ -1,18 +1,13 @@
 import { useEffect, useState } from 'react';
 import {useSelector} from "react-redux";
 import axios from 'axios';
-
-
 import { Button } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 import DatePicker from "react-datepicker";
-
 import 'react-datepicker/dist/react-datepicker.css';
 import gr from "./GuestRequestPage.module.css";
 import { useNavigate } from 'react-router-dom';
 
-
-
-let hodLists = ['hod1', 'hod2', 'hod3'];
 
 export default function GuestRequestPage() {
 
@@ -32,7 +27,6 @@ export default function GuestRequestPage() {
         }
         
         let getAllHods = async () => {
-
             try {
                 let response = await axios.get("http://localhost:5000/data/all-hods", {headers});
 
@@ -325,7 +319,13 @@ export default function GuestRequestPage() {
                         })}
                     </select>
                 </div>
-                <Button type='submit' variant='contained' color="success" disabled={isCreated} className={gr.button}>Send</Button>
+                <Button 
+                    type='submit' 
+                    variant='contained' 
+                    disabled={isCreated} 
+                    className={gr.button}
+                    
+                ><SendIcon className={gr.sendIcon} fontSize='small'/>Send</Button>
                 {status && <p className={gr.status}>{status}</p>}
             </form>
         </div>

@@ -1,16 +1,29 @@
 nav {
-    height: 5rem;
+    max-width: 100vw;
+    min-height: 5rem;
+    padding: 0.5rem 0;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.022);
+    background-color: #FFFF;
     border-bottom: 1px solid rgba(0, 0, 0, 0.375);
+}
+
+.options {
+    margin-left: auto;
+}
+
+.h1 {
+    margin-left: 8rem;
+    font-weight: 700;
+    font-size: 2rem;
 }
 
 ul {
     margin: 0 1rem;
     padding: 0;
     display: flex;
+    justify-content: space-between;
     list-style: none;
 }
 
@@ -19,13 +32,7 @@ li {
     align-items: center;
 }
 
-.options {
-    margin: 1rem;
-    color: white;
-}
-
-.btn {
-    padding: 0.5rem !important;
-    background-color: #2E8B57 !important;
-    margin-right: 1rem !important;
+.btn, .btn2 {
+    margin: 0.5rem !important;
+    font-weight: 700 !important;
 }

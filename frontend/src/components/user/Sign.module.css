@@ -54,7 +54,7 @@ h2 {
     margin-bottom: 2rem;
     font-size: 2rem;
     font-weight: 700;
-    color: rgba(0, 0, 0, 0.84);
+    color: #2b3939;
 }
 
 .inpField {
@@ -64,12 +64,12 @@ h2 {
 
 .inpField input {
     padding-left: 2.5rem;
-    background-color: rgb(234, 234, 234);
+    background-color: #E7E9E9;
 }
 
 .inpField select {
     padding-left: 2.5rem;
-    background-color: rgb(234, 234, 234);
+    background-color: #E7E9E9;
 }
 
 .icons {
@@ -81,9 +81,11 @@ h2 {
 
 .button {
     width: 100%;
-    background-color: #2E8B57 !important;
+    background-color: #142424 !important;
+    color: white !important;
     display: block !important;
     margin: auto !important;
+    box-shadow: none !important;
 }
 
 .bottomNav {
@@ -98,7 +100,7 @@ h2 {
 .getSignUp {
     text-decoration: underline;
     text-decoration-color: rgb(144, 144, 223);
-    color: rgb(47, 47, 245);
+    color: black;
     cursor: pointer;
 }
 
