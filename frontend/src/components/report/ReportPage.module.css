@@ -85,6 +85,11 @@
     margin-bottom: 2rem;
 }
 
+.reasonOfArrival p{
+    text-align: justify;
+}
+
+
 .guestDtl {
     background-color: #e7e9e9;
     margin-bottom: 0.5rem;

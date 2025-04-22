@@ -101,9 +101,7 @@ export default function Report() {
                     </div>
                     <h3>Reason of Arrival</h3>
                     <div className={re.reasonOfArrival}>
-                        <div className={re.kvpair}>
-                            <p className={re.val}>{req.reasonOfArrival}</p>
-                        </div>
+                        <p>{req.reasonOfArrival}</p>
                     </div>
                     <h3>Approval Status</h3>
                     <div className={re.approvalStatus}>

@@ -50,6 +50,10 @@ p {
     font-size: 0.93rem;
 }
 
+.reasonOfArrival {
+    text-align: justify;
+}
+
 
 .guestsDtl {
     margin-top: 3rem;

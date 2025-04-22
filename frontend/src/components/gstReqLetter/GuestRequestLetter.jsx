@@ -22,6 +22,7 @@ export default function GuestReqLetter() {
     
     const allRequests = useSelector(state => state.allRequests);
     const user = useSelector(state => state.user);
+    const college = useSelector(state => state.college);
     const headers = useSelector(state => state.headers);
 
     const [req, setReq] = useState({});
@@ -79,13 +80,13 @@ export default function GuestReqLetter() {
                 <div className={rl.from}>
                     <h5>From: </h5>
                     <p>{req.requestedBy.name}</p>
-                    <p>{branchFullForms[req.requestedBy.department]}</p>    
+                    <p>{college.departments[req.requestedBy.department]}</p>    
                     <p>Mangalore Institute of Technology and Engineering</p>
                 </div>
                 {user.type !== "coordinator" && (<div className={rl.to}>
                     <h5>To: </h5>
                     <p>{user.name}</p>
-                    {(user.type === "hod" || user.type === "coordinator") && <p>{branchFullForms[user.department]}</p>}
+                    {(user.type === "hod" || user.type === "coordinator") && <p>{college.departments[user.department]}</p>}
                     <p>Mangalore Institute of Technology and Engineering</p>
                 </div>)}
                 <div className={rl.date}>
@@ -96,7 +97,7 @@ export default function GuestReqLetter() {
                         <h5>Subject :</h5>
                         <p>Guest Accommodation Request</p>
                     </div>
-                    <p className="">{req.reasonOfArrival}</p>
+                    <p className={rl.reasonOfArrival}>{req.reasonOfArrival}</p>
                 </div>
                 <div className={rl.guestsDtl}>
                     <h4>Guest Details</h4>
