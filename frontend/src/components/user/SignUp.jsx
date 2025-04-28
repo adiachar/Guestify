@@ -37,6 +37,10 @@ export default function SignUp() {
         },
         validate: (values) => {},
         onSubmit: async (values) => {
+            if(values.conPass != values.password) {
+                return setStatus("Passwords didn't match!");
+            }
+
             try {
                 let response = await axios.post("http://localhost:5000/user/sign-up", values);
 
