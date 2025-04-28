@@ -24,7 +24,7 @@ export default function AllRequestsPage() {
     useEffect(() => {
         let getAllRequests = async () => {
             try {
-                let response = await axios.get("http://localhost:5000/data/all-requests", {headers});
+                let response = await axios.get("https://guestify-8blq.onrender.com/data/all-requests", {headers});
 
                 if(response.status === 200) {
                     dispatch(setAllRequests(response.data.allRequests));

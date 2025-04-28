@@ -42,7 +42,7 @@ export default function SignUp() {
             }
 
             try {
-                let response = await axios.post("http://localhost:5000/user/sign-up", values);
+                let response = await axios.post("https://guestify-8blq.onrender.com/user/sign-up", values);
 
                 if(response.status === 200) {
                     localStorage.setItem("token", response.data.token);

@@ -31,7 +31,7 @@ export default function RequestCard({req, setIsUpdated}) {
 
     const handleDelete = async () => {
         try {
-            let response = await axios.patch(`http://localhost:5000/request/delete/${req._id}`, {}, {headers});
+            let response = await axios.patch(`https://guestify-8blq.onrender.com/request/delete/${req._id}`, {}, {headers});
         
             if(response.status === 200) {
                 setIsUpdated(isUpdated => !isUpdated);
@@ -55,7 +55,7 @@ export default function RequestCard({req, setIsUpdated}) {
 
     const handleDeletePermanently = async () => {
         try {
-            let response = await axios.patch(`http://localhost:5000/request/delete-permanently/${req._id}`, {}, {headers});
+            let response = await axios.patch(`https://guestify-8blq.onrender.com/request/delete-permanently/${req._id}`, {}, {headers});
         
             if(response.status === 200) {
                 setIsUpdated(isUpdated => !isUpdated);

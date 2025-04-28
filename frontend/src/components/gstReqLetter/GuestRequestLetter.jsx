@@ -8,16 +8,6 @@ import {Button} from "@mui/material";
 
 import rl from "./GuestRequestLetter.module.css";
 
-const branchFullForms = {
-    ISE: "Informantion Science and Engineering",
-    CSE: "Compouter Science and  Engineering",
-    ECE: "Electronics and Communication Engineering",
-    MEC: "Mechanical Engineering",
-    AIML: "Artificial Intelligence and Machine Learning",
-    IOT: "Internet Of Things",
-    CVL: "Civil Engineering",
-}
-
 export default function GuestReqLetter() {
     
     const allRequests = useSelector(state => state.allRequests);
@@ -48,7 +38,7 @@ export default function GuestReqLetter() {
 
     const handleApprove = async () => {
         try {
-            let response = await axios.patch(`http://localhost:5000/request/approve/${req._id}`, {}, {headers});
+            let response = await axios.patch(`https://guestify-8blq.onrender.com/request/approve/${req._id}`, {}, {headers});
             if(response.status === 200) {
                 setIsSubmited(true);
                 setStatus("Request Approved");
@@ -224,7 +214,7 @@ function RejectGuestRequest({isSubmited, setIsSubmited, setStatus, req, headers}
 
     const handleReject = async () => {
         try {
-            let response = await axios.patch(`http://localhost:5000/request/reject/${req._id}`, {reason}, {headers});
+            let response = await axios.patch(`https://guestify-8blq.onrender.com/request/reject/${req._id}`, {reason}, {headers});
             if(response.status === 200) {
                 setIsSubmited(true);
                 setStatus("Request Rejected");
@@ -275,7 +265,7 @@ function ApproveRequestForPrincipal({isSubmited, setIsSubmited, setStatus, req, 
 
     const getAllWardens = async () => {
         try {
-            let response = await axios.get("http://localhost:5000/data/all-wardens", {headers});
+            let response = await axios.get("https://guestify-8blq.onrender.com/data/all-wardens", {headers});
             if(response.status === 200) {
                 setAllWardens(response.data.allWardens);
                 setSelectedWardenId(response.data.allWardens[0]._id);
@@ -289,7 +279,7 @@ function ApproveRequestForPrincipal({isSubmited, setIsSubmited, setStatus, req, 
 
     const getAllMessManagers = async () => {
         try {
-            let response = await axios.get("http://localhost:5000/data/all-messManagers", {headers});
+            let response = await axios.get("https://guestify-8blq.onrender.com/data/all-messManagers", {headers});
             if(response.status === 200) {
                 setAllMessManagers(response.data.allMessManagers);
                 setSelectedMessManagerId(response.data.allMessManagers[0]._id);
@@ -308,7 +298,7 @@ function ApproveRequestForPrincipal({isSubmited, setIsSubmited, setStatus, req, 
         }
         
         try {
-            let response = await axios.patch(`http://localhost:5000/request/approve/${req._id}`, values, {headers});
+            let response = await axios.patch(`https://guestify-8blq.onrender.com/request/approve/${req._id}`, values, {headers});
 
             if(response.status === 200) {
                 setIsSubmited(true);
@@ -388,7 +378,7 @@ function AllocateRoom({req, isSubmited, setIsSubmited, setStatus, headers}) {
     let handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let response = await axios.patch(`http://localhost:5000/request/approve/${req._id}`, {rooms}, {headers});
+            let response = await axios.patch(`https://guestify-8blq.onrender.com/request/approve/${req._id}`, {rooms}, {headers});
 
             if(response.status === 200) {
                 setIsSubmited(true);
