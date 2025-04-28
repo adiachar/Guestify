@@ -27,7 +27,7 @@ export default function GuestRequestPage() {
         
         let getAllHods = async () => {
             try {
-                let response = await axios.get("http://localhost:5000/data/all-hods", {headers});
+                let response = await axios.get("https://guestify-8blq.onrender.com/data/all-hods", {headers});
 
                 if(response.status === 200) {
                     setAllHods(response.data.allHods);
@@ -134,7 +134,7 @@ export default function GuestRequestPage() {
         }
         
         try {
-            let response = await axios.post("http://localhost:5000/request/guest-request", values, {headers});
+            let response = await axios.post("https://guestify-8blq.onrender.com/request/guest-request", values, {headers});
 
             if(response.status === 200) {
                 setIsCreated(true);

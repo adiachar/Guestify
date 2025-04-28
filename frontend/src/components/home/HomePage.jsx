@@ -39,7 +39,7 @@ export default function HomePage() {
             }
 
             try {
-                let response = await axios.get("http://localhost:5000/user/authorize-user", {headers});
+                let response = await axios.get("https://guestify-8blq.onrender.com/user/authorize-user", {headers});
 
                 if(response.status === 200) {
                     dispatch(setUser(response.data.user));

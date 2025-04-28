@@ -24,7 +24,7 @@ export default function SignIn() {
         validate: () => {},
         onSubmit: async (values) => {
             try {
-                let response = await axios.post("http://localhost:5000/user/sign-in", values);
+                let response = await axios.post("https://guestify-8blq.onrender.com/user/sign-in", values);
 
                 if(response.status === 200) {
                     localStorage.setItem("token", response.data.token);

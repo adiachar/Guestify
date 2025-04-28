@@ -25,7 +25,7 @@ export default function Report() {
 
         const getFullReq = async (req) => {
             try {
-                let response = await axios.get(`http://localhost:5000/data/guest-request/${req._id}`, {headers});       
+                let response = await axios.get(`https://guestify-8blq.onrender.com/data/guest-request/${req._id}`, {headers});       
                 
                 if(response.status === 200) {
                     setReq(response.data.guestRequest);
